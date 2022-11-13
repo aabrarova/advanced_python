@@ -3,6 +3,12 @@ from typing import IO
 
 
 class Worker:
+    middle_name: str
+    last_name: str
+    first_name: str
+    salary: int
+    birth_year: int
+
     def __init__(self, first_name: str, last_name: str, middle_name: str, birth_year: int, salary: int):
         self.first_name = first_name
         self.last_name = last_name
@@ -11,11 +17,13 @@ class Worker:
         self.salary = salary
 
     def worker_info(self) -> str:
-        """Returns formatted worker information"""
-        return f"ФИО: {self.last_name.capitalize()} {first_char(self.first_name).capitalize()}. {first_char(self.middle_name).capitalize()}. Год рождения: {self.birth_year} Зарплата: {self.salary}"
+        """Returns formatted worker information."""
+        return f"ФИО: {self.last_name.capitalize()} {first_char(self.first_name).capitalize()}." \
+               f" {first_char(self.middle_name).capitalize()}. Год рождения: {self.birth_year} Зарплата: {self.salary}"
 
 
 def first_char(s: str) -> str:
+    """Returns first characters of s or empty string if s is empty."""
     if len(s) > 0:
         return s[0]
     return ""
@@ -37,6 +45,7 @@ def input_workers(num: int) -> list[Worker]:
 
 
 def output_workers(f: IO, workers: list[Worker]) -> None:
+    """Prints workers into file f."""
     for worker in workers:
         f.write(worker.worker_info())
         f.write("\n")
