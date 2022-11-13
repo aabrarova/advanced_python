@@ -12,7 +12,13 @@ class Worker:
 
     def worker_info(self) -> str:
         """Returns formatted worker information"""
-        return f"ФИО: {self.last_name.capitalize()} {self.first_name.capitalize()} {self.middle_name.capitalize()} Год рождения: {self.birth_year} Зарплата: {self.salary}"
+        return f"ФИО: {self.last_name.capitalize()} {first_char(self.first_name).capitalize()}. {first_char(self.middle_name).capitalize()}. Год рождения: {self.birth_year} Зарплата: {self.salary}"
+
+
+def first_char(s: str) -> str:
+    if len(s) > 0:
+        return s[0]
+    return ""
 
 
 def input_workers(num: int) -> list[Worker]:
