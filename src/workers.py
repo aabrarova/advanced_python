@@ -12,7 +12,7 @@ class Worker:
 
     def worker_info(self) -> str:
         """Returns formatted worker information"""
-        return f"ФИО: {self.last_name} {self.first_name} {self.middle_name} Год рождения: {self.birth_year} Зарплата: {self.salary}"
+        return f"ФИО: {self.last_name.capitalize()} {self.first_name.capitalize()} {self.middle_name.capitalize()} Год рождения: {self.birth_year} Зарплата: {self.salary}"
 
 
 def input_workers(num: int) -> list[Worker]:
