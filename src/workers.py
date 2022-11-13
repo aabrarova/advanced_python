@@ -1,22 +1,25 @@
 import re
+from typing import IO
 
 
 class Worker:
-    def __init__(self, first_name, last_name, middle_name, birth_year, salary):
+    def __init__(self, first_name: str, last_name: str, middle_name: str, birth_year: int, salary: int):
         self.first_name = first_name
         self.last_name = last_name
         self.middle_name = middle_name
         self.birth_year = birth_year
         self.salary = salary
 
-    def worker_info(self):
+    def worker_info(self) -> str:
+        """Returns formatted worker information"""
         return f"ФИО: {self.last_name} {self.first_name} {self.middle_name} Год рождения: {self.birth_year} Зарплата: {self.salary}"
 
 
-def input_workers(num):
+def input_workers(num: int) -> list[Worker]:
+    """Inputs data from console and returns it as a list each item of which is of class Worker."""
     workers = []
     for i in range(0, num):
-        print(f"Input worker 1#{i + 1}")
+        print(f"Input worker #{i + 1}")
         first_name = input("First name: ")
         last_name = input("Last name: ")
         middle_name = input("Middle name: ")
@@ -27,7 +30,7 @@ def input_workers(num):
     return workers
 
 
-def output_workers(f, workers):
+def output_workers(f: IO, workers: list[Worker]) -> None:
     for worker in workers:
         f.write(worker.worker_info())
         f.write("\n")
