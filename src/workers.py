@@ -18,8 +18,10 @@ class Worker:
 
     def worker_info(self) -> str:
         """Returns formatted worker information."""
-        return f"ФИО: {self.last_name.capitalize()} {first_char(self.first_name).capitalize()}." \
-               f" {first_char(self.middle_name).capitalize()}. Год рождения: {self.birth_year} Зарплата: {self.salary}"
+        return f"ФИО: {self.short_name()} Год рождения: {self.birth_year} Зарплата: {self.salary}"
+
+    def short_name(self):
+        return join([self.last_name.capitalize(), shorten_name(self.first_name), shorten_name(self.middle_name)], " ")
 
 
 def first_char(s: str) -> str:
@@ -27,6 +29,22 @@ def first_char(s: str) -> str:
     if len(s) > 0:
         return s[0]
     return ""
+
+
+def shorten_name(s: str) -> str:
+    if len(s) > 0:
+        return first_char(s).capitalize() + "."
+    return ""
+
+
+def join(strings: list[str], delimiter: str) -> str:
+    r = ""
+    for string in strings:
+        if len(string) > 0:
+            if len(r) > 0:
+                r += delimiter
+            r += string
+    return r
 
 
 def input_workers(num: int) -> list[Worker]:
